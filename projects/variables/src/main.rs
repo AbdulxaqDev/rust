@@ -1,16 +1,30 @@
-const NUM: i8 = 1_2_7;
+use std::io;
 
 fn main() {
-    println!("constant NUM is {NUM}");
+    const MONTHES: [&str; 12] = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
 
-    let x = 5;
+    let mut index = String::new();
 
-    println!("x  is {x}");
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line!");
 
-    let x = x + 18;
+    let index: usize = index.trim().parse().expect("Enter a number!");
 
-    println!("shadowed x  is {x}");
+    let element = MONTHES[index];
 
-    let a_char = 'A';
-    println!("{}", a_char);
+    println!("Month is {element}");
 }

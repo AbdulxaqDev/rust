@@ -29,3 +29,31 @@ as rand:
 rand = "0.8.5"
 
 We can update used crates with 'cargo update'
+
+By default, variables are immutable in rust, to make them mutable, the 'mut' keyword need to be used
+
+let mut num = 7;
+
+Can't be used variables created with 'let' in blobal scope, but with 'conts' can be.
+The contant variables are always immutable, the type of value must be annotated and can be assigned to only 
+constant expression, not to a value that can be calculates at runtime. And, uppercase is used for constants.
+
+const NUM: i8 = 127;
+
+We can shadow variables
+
+let x = 5;
+let x = x + 18;
+
+last version of x will be used, this is shadowing.
+
+mut vs shadowing
+
+shadowed variable at the end stays immutable and its type can be changed while shadowing
+with the same variable name.
+
+let spaces = "    ";
+let spaces = spaces.len();
+
+
+ 
