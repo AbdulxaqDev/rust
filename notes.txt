@@ -22,3 +22,10 @@ to include bult in library we need use `use` keyword as `#include` in c programm
 Cargo initializes git on new projects. It does not, if new project is created already in git.
 To avoid git initialization, we can use --vcs flag.
 
+[March 12, 2024]
+We can add external crate to Cargo.toml file to use in projetc.
+as rand:
+
+rand = "0.8.5"
+
+We can update used crates with 'cargo update'
