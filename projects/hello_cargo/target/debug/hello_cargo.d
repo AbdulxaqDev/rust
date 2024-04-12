@@ -1,1 +1,0 @@
-/Users/abdulkhak/Documents/rust/projects/hello_cargo/target/debug/hello_cargo: /Users/abdulkhak/Documents/rust/projects/hello_cargo/src/main.rs
