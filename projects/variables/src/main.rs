@@ -1,9 +1,16 @@
+const NUM: i8 = 1_2_7;
+
 fn main() {
-    let mut x = 5;
+    println!("constant NUM is {NUM}");
+
+    let x = 5;
 
     println!("x  is {x}");
 
-    x = 6;
+    let x = x + 18;
 
-    println!("x  is {x}");
+    println!("shadowed x  is {x}");
+
+    let a_char = 'A';
+    println!("{}", a_char);
 }
