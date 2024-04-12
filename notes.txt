@@ -18,3 +18,7 @@ in `target/release/`.
 [September 5, 2023]
 to include bult in library we need use `use` keyword as `#include` in c programmin language.
 
+[March 11, 2024]
+Cargo initializes git on new projects. It does not, if new project is created already in git.
+To avoid git initialization, we can use --vcs flag.
+
