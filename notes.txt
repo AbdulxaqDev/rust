@@ -18,11 +18,11 @@ in `target/release/`.
 [September 5, 2023]
 to include bult in library we need use `use` keyword as `#include` in c programmin language.
 
-[March 11, 2024]
+[April 11, 2024]
 Cargo initializes git on new projects. It does not, if new project is created already in git.
 To avoid git initialization, we can use --vcs flag.
 
-[March 12, 2024]
+[April 12, 2024]
 We can add external crate to Cargo.toml file to use in projetc.
 as rand:
 
@@ -55,5 +55,38 @@ with the same variable name.
 let spaces = "    ";
 let spaces = spaces.len();
 
+[April 14, 2024]
+ Rust is expression based language. Need to understand the difference between
+ statement and expression in rust.
 
- 
+ A statement does an action but does not return value.
+ An expression finalize a rezult and returns it.
+
+ An funtion call is expression. Macros are expression. But function signeture is statement.
+ Variables are statement.
+
+ let a = (let x = 7); // gives error
+
+
+let y = {
+    let x = 4;
+    x+2
+}  
+// here y is equials 6, how?
+Because the last statement in expression is returned.
+As we can see above, there is no semicolon after last state-
+ment. If we put semicolon after last statement, whole expression
+becomes statment and it does not work as expected.
+
+fn five() -> u8 {
+    5
+}
+
+here is the function five is valid function and it returns five with
+return type of u8 (unsigned 8 byte integer).
+
+We can set parametres with its type in functions.
+
+fn muliply_by2(num: i128) -> i128 {
+    num*2
+}
