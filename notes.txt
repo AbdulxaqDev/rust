@@ -1,59 +1,59 @@
-Let’s recap what we’ve learned so far about Cargo:
-
-We can create a project using `cargo new`.
-We can build a project using `cargo build`.
-We can build and run a project in one step using `cargo run`.
-We can build a project without producing a binary to check for errors using `cargo check`.
-Instead of saving the result of the build in the same directory as our code, Cargo stores it in the `target/debug/` directory.
-
-Building for Release
-When your project is finally ready for release, you can use `cargo build --release` to compile it with optimizations. 
-This command will create an executable in `target/release/` instead of `target/debug/`. The optimizations make 
-your Rust code run faster, but turning them on lengthens the time it takes for your program to compile. This is why 
-there are two different profiles: one for development, when you want to rebuild quickly and often, and another for building 
-the final program you’ll give to a user that won’t be rebuilt repeatedly and that will run as fast as possible. 
-If you’re benchmarking your code’s running time, be sure to run `cargo build --release` and benchmark with the executable 
-in `target/release/`.
+ Let’s recap what we’ve learned so far about Cargo:
+ 
+ We can create a project using `cargo new`.
+ We can build a project using `cargo build`.
+ We can build and run a project in one step using `cargo run`.
+ We can build a project without producing a binary to check for errors using `cargo check`.
+ Instead of saving the result of the build in the same directory as our code, Cargo stores it in the `target/debug/` directory.
+ 
+ Building for Release
+ When your project is finally ready for release, you can use `cargo build --release` to compile it with optimizations. 
+ This command will create an executable in `target/release/` instead of `target/debug/`. The optimizations make 
+ your Rust code run faster, but turning them on lengthens the time it takes for your program to compile. This is why 
+ there are two different profiles: one for development, when you want to rebuild quickly and often, and another for building 
+ the final program you’ll give to a user that won’t be rebuilt repeatedly and that will run as fast as possible. 
+ If you’re benchmarking your code’s running time, be sure to run `cargo build --release` and benchmark with the executable 
+ in `target/release/`.
 
 [September 5, 2023]
-to include bult in library we need use `use` keyword as `#include` in c programmin language.
+ to include bult in library we need use `use` keyword as `#include` in c programmin language.
 
 [April 11, 2024]
-Cargo initializes git on new projects. It does not, if new project is created already in git.
-To avoid git initialization, we can use --vcs flag.
+ Cargo initializes git on new projects. It does not, if new project is created already in git.
+ To avoid git initialization, we can use --vcs flag.
 
 [April 12, 2024]
-We can add external crate to Cargo.toml file to use in projetc.
-as rand:
+ We can add external crate to Cargo.toml file to use in projetc.
+ as rand:
 
-rand = "0.8.5"
+ rand = "0.8.5"
 
-We can update used crates with 'cargo update'
+ We can update used crates with 'cargo update'
 
-By default, variables are immutable in rust, to make them mutable, the 'mut' keyword need to be used
-
-let mut num = 7;
-
-Can't be used variables created with 'let' in blobal scope, but with 'conts' can be.
-The contant variables are always immutable, the type of value must be annotated and can be assigned to only 
-constant expression, not to a value that can be calculates at runtime. And, uppercase is used for constants.
-
-const NUM: i8 = 127;
-
-We can shadow variables
-
-let x = 5;
-let x = x + 18;
-
-last version of x will be used, this is shadowing.
-
-mut vs shadowing
-
-shadowed variable at the end stays immutable and its type can be changed while shadowing
-with the same variable name.
-
-let spaces = "    ";
-let spaces = spaces.len();
+ By default, variables are immutable in rust, to make them mutable, the 'mut' keyword need to be used
+ 
+ let mut num = 7;
+ 
+ Can't be used variables created with 'let' in blobal scope, but with 'conts' can be.
+ The contant variables are always immutable, the type of value must be annotated and can be assigned to only 
+ constant expression, not to a value that can be calculates at runtime. And, uppercase is used for constants.
+ 
+ const NUM: i8 = 127;
+ 
+ We can shadow variables
+ 
+ let x = 5;
+ let x = x + 18;
+ 
+ last version of x will be used, this is shadowing.
+ 
+ mut vs shadowing
+ 
+ shadowed variable at the end stays immutable and its type can be changed while shadowing
+ with the same variable name.
+ 
+ let spaces = "    ";
+ let spaces = spaces.len();
 
 [April 14, 2024]
  Rust is expression based language. Need to understand the difference between
@@ -68,25 +68,33 @@ let spaces = spaces.len();
  let a = (let x = 7); // gives error
 
 
-let y = {
+ let y = {
     let x = 4;
     x+2
-}  
-// here y is equials 6, how?
-Because the last statement in expression is returned.
-As we can see above, there is no semicolon after last state-
-ment. If we put semicolon after last statement, whole expression
-becomes statment and it does not work as expected.
+ }  
+ // here y is equials 6, how?
+ Because the last statement in expression is returned.
+ As we can see above, there is no semicolon after last state-
+ ment. If we put semicolon after last statement, whole expression
+ becomes statment and it does not work as expected.
 
-fn five() -> u8 {
+ fn five() -> u8 {
     5
-}
+ }
 
-here is the function five is valid function and it returns five with
-return type of u8 (unsigned 8 byte integer).
+ here is the function five is valid function and it returns five with
+ return type of u8 (unsigned 8 byte integer).
 
-We can set parametres with its type in functions.
+ We can set parametres with its type in functions.
+ 
+ fn muliply_by2(num: i128) -> i128 {
+     num*2
+ }
 
-fn muliply_by2(num: i128) -> i128 {
-    num*2
-}
+ Control flow
+ In rust control flow is expresion, as we can see here
+
+ let condition = true;
+ let number = if condition {5} else {7};
+
+ println!("num is {num}");
