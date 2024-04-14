@@ -106,3 +106,82 @@
  of data and the first value's type is expected for following conditions.
 
  "5" is string, so the the 6 is also ecpected to be string, so error will be thrown here.
+
+ Loops
+ In rusr there are three type of loops, loop, while and for;
+ loop iterates forever, 
+
+ loop {
+   println!("again!");
+ }
+
+ we can stop it with break keyword or skip some iterations with continue keyword
+
+ loop {
+   if condition {
+      break;
+   }
+
+   if condition2 {
+      continue;
+   }
+ }
+ 
+ loop is also expression, so we can return a vlaue
+
+ loop {
+   if condition {
+      break value;
+   }
+ }
+
+ ---
+    let mut number = 0;
+
+    let end_loop_result = loop {
+        number += 1;
+        if number == 10 {
+            break number;
+        }
+    };
+
+    println!("end loop result {end_loop_result}");
+ ---
+
+ we can also label a loop and break it with its label. To create lable we use single 
+ quote then label and colon as following: 
+ 
+ 'label: loop {
+
+   }
+ 
+ Here an factory example, which produces material untill it has gas.
+ When gas finishes the engine gets off. When the target material amount is made
+ the whole factory gets turns off and prints produced material emount.
+   ------
+    let mut material = 0;
+    let target = 10;
+
+    'factory: loop {
+        let mut gas = 3;
+        println!("Material amount: {material}");
+        println!("Starting engine!");
+
+        loop {
+            println!("Gas left: {gas}");
+            if gas == 0 {
+                println!("Stopping engine!");
+                break;
+            }
+            if material == target {
+                println!("We got enough, stoping factory!");
+                break 'factory;
+            }
+            gas -= 1;
+            material += 1;
+        }
+    }
+    println!("Material are made: {material}");
+   ------
+
+ 
