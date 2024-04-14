@@ -18,7 +18,6 @@ fn main() {
         println!("Material amount: {material}");
         println!("Starting engine!");
 
-
         loop {
             println!("Gas left: {gas}");
             if gas == 0 {
@@ -34,4 +33,16 @@ fn main() {
         }
     }
     println!("Material are made: {material}");
+
+    let mut age = 0;
+
+    while age < 9 {
+        age += 1;
+    }
+
+    println!("wh: {age}");
+
+    for n in (1..5).rev() {
+        println!("N is {n}");
+    }
 }
