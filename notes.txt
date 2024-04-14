@@ -98,3 +98,11 @@
  let number = if condition {5} else {7};
 
  println!("num is {num}");
+
+ -----
+ let num = if condition { "5" } else { 6 };
+
+ Here this code gives error, because both if and else arms should retunr the same type
+ of data and the first value's type is expected for following conditions.
+
+ "5" is string, so the the 6 is also ecpected to be string, so error will be thrown here.
