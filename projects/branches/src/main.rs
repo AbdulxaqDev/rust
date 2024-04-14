@@ -20,7 +20,7 @@ fn main() {
     }
 
     let condition = false;
-    let num = if condition { 5 } else { 7 };
-
+    let num = if condition { 5 } else { "6" };
+    // throws error
     println!("num is {num}");
 }
