@@ -222,7 +222,10 @@
     let s2 = s1.clone();
 
     println!("{}", s1);
+    
+    A function can return two values with tuple
 
+    
 
 
 

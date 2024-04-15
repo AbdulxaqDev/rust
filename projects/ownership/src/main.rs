@@ -1,16 +1,15 @@
 fn main() {
-    let _s1 = gives_ownership();
+   let greeting = String::from("Hello, there");
 
-    let s2 = String::from("Hello");
+   let (s, len) = str_get_len(greeting);
 
-    let _s3 = takes_and_gives_back(s2);
+   println!("The length of '{}' is {}", s, len);
 }
 
-fn gives_ownership() -> String {
-    let s = String::from("hehe");
-    s    
+fn str_get_len(s: String) -> (String, usize){
+    let len = s.len();
+
+    return (s, len);
 }
 
-fn takes_and_gives_back(s: String) -> String {
-    s
-}
+
