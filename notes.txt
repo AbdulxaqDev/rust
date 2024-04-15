@@ -273,9 +273,3 @@
 
     let r1 = &s;
     let r2 = &mut s;
- test
-    
-
-
-
- 
