@@ -1,15 +1,13 @@
 fn main() {
-   let greeting = String::from("Hello, there");
+   let g = String::from("Hello, there");
 
-   let (s, len) = str_get_len(greeting);
+   let l = get_len(&g);
 
-   println!("The length of '{}' is {}", s, len);
+   println!("The length of '{}' is {}", g, l);
 }
 
-fn str_get_len(s: String) -> (String, usize){
-    let len = s.len();
-
-    return (s, len);
+fn get_len(s: &String) -> usize{
+    s.len()
 }
 
 
