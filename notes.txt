@@ -184,4 +184,46 @@
     println!("Material are made: {material}");
    ------
 
+   [April 15, 2024]
+    
+    Ownership
+
+    The Ownership is a set of rules rust uses for memory managment.
+    There are three simple rules:
+    i) any value has owner 
+    ii) a vlue can have only one owner at a time 
+    iii) when the scope ends a value in, the value is dropped
+
+    To understand the ownership,  we need to understand the stack and heap.
+    In rust some data are stored in stack and some in heap based on their types.
+    We can with the example of string.
+    When we create string literal:
+
+    let s = "hello";
+
+    this is hard coded and not expected to change at runtime or compile time. 
+    if it is supposed to change, needed to use another type of string String:
+
+      let mut s = String::from("Hello");
+      s.push_str(", World");
+
+    This type of string is stored on heap and can be modified. Its data is stored at heap, but the pointer adress to this string is stored in stack.
+
+    let s1 = String::from("Hello");
+    let s2 = s1;
+
+    println!("{}", s1);
+
+    above the code gives error. Because s1 and s2 are could point to one pointer and when the scope ends, they try to free the memory on heap twice, which coauses memory curruption. To prevent this, in rust, s1 is moved to s2, so after s2 the s1 is invalidated. This is colled Move in rust.
+
+    But some times we need to refence duplicates, so in that case we can clone it.
+
+    let s1 = String::from("Hello");
+    let s2 = s1.clone();
+
+    println!("{}", s1);
+
+
+
+
  
