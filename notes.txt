@@ -268,7 +268,11 @@
     
     println!("{}, {}", r1, r2);    
 
+ the same rule applies for mutable and imutable references at a time:
+    let mut s = String::from("Brendan");
 
+    let r1 = &s;
+    let r2 = &mut s;
     
 
 
