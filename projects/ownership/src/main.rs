@@ -1,13 +1,10 @@
 fn main() {
-   let g = String::from("Hello, there");
-
-   let l = get_len(&g);
-
-   println!("The length of '{}' is {}", g, l);
+   let s = String::from("Hello, there");
+    changes(&s);
 }
 
-fn get_len(s: &String) -> usize{
-    s.len()
+fn changes(s: &String) {
+    s.push_str("Hello there");
 }
 
 
