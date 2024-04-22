@@ -5,9 +5,3 @@ And taking notes on the way that what I understand while learning rust.
 
 
 ---
-
-# Got:
-## Clones: 32 📄
-## Views: 167 👀
-
-## Give a ⭐!
