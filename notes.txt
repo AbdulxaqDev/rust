@@ -190,13 +190,13 @@
 
  The Ownership is a set of rules rust uses for memory managment.
  There are three simple rules:
-  i) any value has owner 
+  i) any value has an owner 
   ii) a vlue can have only one owner at a time 
   iii) when the scope ends a value in, the value is dropped
 
  To understand the ownership,  we need to understand the stack and heap.
  In rust some data are stored in stack and some in heap based on their types.
- We can with the example of string.
+ We can see with the example of string.
  When we create string literal:
 
     let s = "hello";
@@ -277,7 +277,7 @@
  the immutable references are need to be used before initialization of mutable refence.
  Otherwise it causes error:
 
- this code failse:
+ this code fails:
 
     let mut s = String::from("hello");
 
@@ -304,3 +304,45 @@
     let r3 = &mut s;
 
     println!("{}", r3);
+
+[April 23, 2024]
+  References and Borrowing
+
+    In rust, we can reference to a value and mutate it, if it is mutable or we can just use it's value. With reference
+    we do not have to pass an ownership and return it back again. We can simple use any value's by it is reference
+    as following:
+
+    fn main() {
+        let str = String::from("Brendan Eich");
+
+        println!("The length of '{}' is {}", str, get_len(&str));
+    }
+
+    fn get_len(str: &String) -> usize {
+        str.len()
+    }
+
+    We call the action of creating a reference borrowing. As in real life, if a person owns something, 
+    you can borrow it from them. When you’re done, you have to give it back. You don’t own it.
+
+    References are also can be mutable and immutable as variables.
+
+    If we look at the code above, the str variable is immutable, so if we try to modify it in get_len() function
+    we get an error.
+
+    fn get_len(str: &String) -> usize {
+        str.push_str("change!");
+        str.len()
+    }
+
+    So make it mutable we need to make the variable mutabel and pass it to function as mutable as following:
+
+    ---
+    let mut str = String::from("Brendan Eich");
+    ---
+    get_len(&mut str);
+    ---
+    fn get_len(str: &mut String) -> usize {}
+    ---
+
+    as we can see we need to show the mutabilit of variable anywhere.
