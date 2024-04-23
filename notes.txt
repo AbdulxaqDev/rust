@@ -184,4 +184,123 @@
     println!("Material are made: {material}");
    ------
 
- 
+[April 15, 2024]
+    
+ Ownership
+
+ The Ownership is a set of rules rust uses for memory managment.
+ There are three simple rules:
+  i) any value has owner 
+  ii) a vlue can have only one owner at a time 
+  iii) when the scope ends a value in, the value is dropped
+
+ To understand the ownership,  we need to understand the stack and heap.
+ In rust some data are stored in stack and some in heap based on their types.
+ We can with the example of string.
+ When we create string literal:
+
+    let s = "hello";
+
+ this is hard coded and not expected to change at runtime or compile time. 
+ if it is supposed to change, needed to use another type of string String:
+
+      let mut s = String::from("Hello");
+      s.push_str(", World");
+
+ This type of string is stored on heap and can be modified. Its data is stored at heap, 
+ but the pointer adress to this string is stored in stack.
+
+    let s1 = String::from("Hello");
+    let s2 = s1;
+
+    println!("{}", s1);
+
+ above the code gives error. Because s1 and s2 are could point to one pointer and when the scope ends, 
+ they try to free the memory on heap twice, which coauses memory curruption. To prevent this, in rust, 
+ s1 is moved to s2, so after s2 the s1 is invalidated. This is colled Move in rust.
+
+ But some times we need to refence duplicates, so in that case we can clone it.
+
+    let s1 = String::from("Hello");
+    let s2 = s1.clone();
+
+    println!("{}", s1);
+    
+ A function can return two values with tuple
+
+ Reference
+
+ we can refence a value without passing it to function with reference.
+
+    fn main() {
+        let g = String::from("Hello, there");
+
+        let l = get_len(&g);
+
+        println!("The length of '{}' is {}", g, l);
+    }
+
+    fn get_len(s: &String) -> usize{
+        s.len()
+    }
+
+ Referenced value are immutable as variable by default. But, we can make it mutable
+ with "mut":
+
+ fn main() {
+    let mut s = String::from("Hello, there | ");
+     changes(&mut s);
+
+     println!("{}", s);
+ }
+
+ fn changes(s: &mut String) {
+     s.push_str("Hello there");
+ }
+
+ One restriction with referenced mutable value is it can only has one reference at a time. Following 
+ code fails: 
+
+    let mut s = String::from("Brendan");
+
+    let r1 = &mut s;
+    let r2 = &mut s;
+    
+    println!("{}, {}", r1, r2);    
+
+ the same rule applies for mutable and imutable references at a time:
+    let mut s = String::from("Brendan");
+
+    let r1 = &s;
+    let r2 = &mut s;
+
+ the immutable references are need to be used before initialization of mutable refence.
+ Otherwise it causes error:
+
+ this code failse:
+
+    let mut s = String::from("hello");
+
+    let r1 = &s;
+    let r2 = &s;
+
+    println!("{} and {}", r1, r2); 
+
+    let r3 = &mut s;
+
+    println!("{}", r2); // here r2, immutable ref is being used after muatble
+
+    println!("{}", r3);
+
+ this code works:
+
+    let mut s = String::from("hello");
+
+    let r1 = &s;
+    let r2 = &s;
+
+    println!("{} and {}", r1, r2); 
+
+    let r3 = &mut s;
+
+    println!("{}", r3);
