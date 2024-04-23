@@ -35,7 +35,7 @@
  let mut num = 7;
  
  Can't be used variables created with 'let' in blobal scope, but with 'conts' can be.
- The contant variables are always immutable, the type of value must be annotated and can be assigned to only 
+ The constant variables are always immutable, the type of value must be annotated and can be assigned to only 
  constant expression, not to a value that can be calculates at runtime. And, uppercase is used for constants.
  
  const NUM: i8 = 127;
@@ -62,7 +62,7 @@
  A statement does an action but does not return value.
  An expression finalize a rezult and returns it.
 
- An funtion call is expression. Macros are expression. But function signeture is statement.
+ A funtion call is expression. Macros are expression. But function signeture is statement.
  Variables are statement.
 
  let a = (let x = 7); // gives error
@@ -97,18 +97,18 @@
  let condition = true;
  let number = if condition {5} else {7};
 
- println!("num is {num}");
+ println!("number is {number}");
 
  -----
  let num = if condition { "5" } else { 6 };
 
- Here this code gives error, because both if and else arms should retunr the same type
+ Here this code gives error, because both if and else arms should return the same type
  of data and the first value's type is expected for following conditions.
 
- "5" is string, so the the 6 is also ecpected to be string, so error will be thrown here.
+ "5" is string, so the the 6 is also expected to be string, so error will be thrown here.
 
  Loops
- In rusr there are three type of loops, loop, while and for;
+ In rust there are three type of loops, loop, while and for;
  loop iterates forever, 
 
  loop {
@@ -156,7 +156,7 @@
    }
  
  Here an factory example, which produces material untill it has gas.
- When gas finishes the engine gets off. When the target material amount is made
+ When gas finishes the engine turns off. When the target amount of material is made
  the whole factory gets turns off and prints produced material emount.
    ------
     let mut material = 0;
@@ -174,7 +174,7 @@
                 break;
             }
             if material == target {
-                println!("We got enough, stoping factory!");
+                println!("We got enough, stopping factory!");
                 break 'factory;
             }
             gas -= 1;
