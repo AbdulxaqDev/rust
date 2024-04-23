@@ -1,10 +1,27 @@
 fn main() {
-    let mut s = String::from("hello");
-    let r1 = &s;
-    let r2 = &s;
+    let mut str = String::from("Brendan Eich");
 
-    println!("{} and {}", r1, r2); 
+    get_len(&mut str);
 
-    let r3 = &mut s;
-    println!("{}", r3);
+    println!("The length of '{}'", str);
+
+    let mut value = 42;
+
+    // First immutable borrow
+    let reference1 = &value;
+    println!("Immutable reference 1: {}", reference1);
+
+    // Second immutable borrow
+    let reference2 = &value;
+    println!("Immutable reference 2: {}", reference2);
+
+    // Mutable borrow
+    let mutable_reference = &mut value;
+    *mutable_reference *= 2;
+    println!("Mutable reference: {}", mutable_reference);
+}
+
+fn get_len(str: &mut String) -> usize {
+    str.push_str(" change!");
+    str.len()
 }
