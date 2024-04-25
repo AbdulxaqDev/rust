@@ -2,19 +2,22 @@ use std::io;
 
 fn main() {
     let mut str = String::new();
-    let mut f_word = String::new();
 
     io::stdin()
         .read_line(&mut str)
         .expect("Failed to read the line!");
 
+    println!("->{}<-", first_word(&str));
+}
 
-    for letter in str.chars() {
-        f_word.push(letter);
+fn first_word(s: &String) -> &str {
+    let mut index = s.len();
+    for (i, letter) in s.char_indices() {
         if letter == ' ' {
+            index = i;
             break;
         }
     }
 
-    println!("First word: {}", f_word);
+    &s[0..index]
 }

@@ -19,9 +19,24 @@ fn main() {
     let mutable_reference = &mut value;
     *mutable_reference *= 2;
     println!("Mutable reference: {}", mutable_reference);
+
+    // ------
+
+    let mut s = String::from("Tester tester");
+    let word = get_len(&s);
+
+    s.clear(); // error, because mutation happening before immutable usage
+    
+    println!("Tester: {:#?}", word);
+
+    let full_name = String::from("Brendan Eich");
+
+    let name = &full_name[0..7];
+    let surname = &full_name[8..full_name.len()];
+
+    println!("Name:-{}, Surname:-{}", name, surname);
 }
 
-fn get_len(str: &mut String) -> usize {
-    str.push_str(" change!");
-    str.len()
+fn get_len(s: &String) -> &str {
+    &s[..3]
 }
