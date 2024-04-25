@@ -353,4 +353,16 @@
       At any given time, you can have either one mutable reference or any number of immutable references.
       References must always be valid.
   The Slice Type 
-    
+    we can reference to some parts of String as following:
+
+    let s = String::from("hello");
+
+    let len = s.len();
+
+    let slice = &s[3..len];
+    let slice = &s[3..];
+
+    [..] - referencing to whole word 
+    [3..] - referencing from 3rd till the end of a word
+    [..3] - referencing till the 3rd character of the word
+    [inclusive, explusive]
