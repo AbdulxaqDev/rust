@@ -352,6 +352,7 @@
 
       At any given time, you can have either one mutable reference or any number of immutable references.
       References must always be valid.
+[April 25, 2024]
   The Slice Type 
     we can reference to some parts of String as following:
 
@@ -366,3 +367,66 @@
     [3..] - referencing from 3rd till the end of a word
     [..3] - referencing till the 3rd character of the word
     [inclusive, explusive]
+
+[April 26, 2024]
+  Using Structs
+   We can create structs as following:
+    struct User {
+        active: bool,
+        username: String,
+        email: String,
+        sign_in_count: u64,
+    }
+
+    and we can set it values as following:
+    
+    let user1 = User {
+        active: true,
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
+        sign_in_count: 1,
+    };
+
+    If we want to update any property of a struct we need to make it mutable.
+    We can not make mutable a specific property of a struct. We need to make whole
+    struct mutable, then we can update any property of a struct as following:
+
+    let mut user1 = User {
+        active: true,
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
+        sign_in_count: 1,
+    };
+
+    user1.email = String::from("anotheremail@example.com"); 
+
+    "field init shorthand syntax"
+    this syntax allows us to set properties of struct in an easy way.
+    In the following function, instead of "username: username", we just set to "username".
+    Because the property of key word and function parametres name are the same:
+
+    ---
+        println!(
+            "{:#?}",
+            build_user(String::from("jony"), String::from("jony@nasa.moon"))
+        );
+    ---
+
+
+    fn build_user(username: String, email: String) -> User {
+        User {
+            active: true,
+            username, // we are not doing "username: username" because they are the same.
+            email, // the same here
+            sign_in_count: 1,
+        }
+    }
+
+    We can update a struct instance with another one as following:
+
+    ---
+        let user2 = User {
+            email: String::from("new_user@nasa.mars"),
+            ..user1 // copying all properties of user1, exept "email"
+        };
+    ---
