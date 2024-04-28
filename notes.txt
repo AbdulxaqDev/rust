@@ -450,3 +450,42 @@
     struct Point(i32, i32, i32);
     struct Color(u8, u8, u8);
 
+ Debugging structs
+    To debug we use logging while programming. In rust we can not log a struct directly. 
+    We need to tell exactly a stuct can be debugged as folling:
+
+    #[derive(Debug)] // this is what we need
+    struct User {
+        active: bool,
+        username: String,
+        email: String,
+        sign_in_count: u64,
+    }
+
+    then we can log the struct in console. To log struct we use {:?} to tell log in a debugging mode.
+    We can also format out output by adding grid sign, {:#?}
+
+    println!("The user is {:#?}", user1);
+
+    Another way to debug is dbg! macro. It prints file and the line number.
+
+    dbg!(&user1);
+
+    ---
+    [area.rs:12:5] &rect1 = User { // the file and line number
+        ...
+    }
+
+    we can use dbg! trait for explressions as following:
+
+    let rect1 = Rectangle {
+        w: dbg!(15 * 2), // here
+        h: 50,
+    };
+
+    ---
+    output:
+
+    [area.rs:9:12] 15 * 2 = 30 // file and line number
+
+
