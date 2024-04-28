@@ -370,7 +370,7 @@
 
 [April 26, 2024]
   Using Structs
-   We can create structs as following:
+    We can create structs as following:
     struct User {
         active: bool,
         username: String,
@@ -430,3 +430,23 @@
             ..user1 // copying all properties of user1, exept "email"
         };
     ---
+[April 28, 2024]
+    We should keep in mind after, above update that, the username and email hold Sring as data, so String does not
+    have default Copy trait as premitive types, like sign_in_count and active. Those two, active and sign_in_count 
+    properties have Copy trait, so they are copied automatically to user2. Which mens they are still available in 
+    user1.
+
+    So, the user2 have email already, the username is moved to user2 form user1, so username will not be available
+    in user1 after update.
+
+    In short, types which have Copy trait are copied and available in the source struck. The types which do not have 
+    Copy trait are moved to new struck, then they will not be available in the source struck. Updating struck with other 
+    struck's instnce is equals to "=" as assignment.
+ 
+ Using Tuple Strucks
+    We use tuple structs when naming the fields are verbose and redundant.
+    The tuple structs are similar to simple struckts:
+
+    struct Point(i32, i32, i32);
+    struct Color(u8, u8, u8);
+
