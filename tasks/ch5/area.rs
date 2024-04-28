@@ -1,10 +1,9 @@
 fn main() {
-    let w = 30;
-    let h = 50;
+    let rect1 = (30, 50);
 
-    println!("The area is {}", area(w, h));
+    println!("The area is {}", area(rect1));
 }
 
-fn area(w: i32, h: i32) -> i32 {
-    w*h
+fn area(rect: (i32, i32)) -> i32 {
+    rect.0*rect.1
 }
