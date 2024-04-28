@@ -527,3 +527,23 @@
             self.w > 0
         }
     }
+
+    In structs we can define associated function. The difference between associated functions and Methods
+    is the associated functions' first parametr is not the &self.
+
+    impl Rectangle {
+        fn square(side: i32) -> Self {
+            Self {
+                w: side,
+                h: side,
+            }
+        }
+    }
+
+    To access associated functions, we use "::", as String::new() or String::from():
+
+
+    let sqr1 = Rectangle::square(30); // here "::"
+
+    println!("Square: {:#?}", sqr1); // printing in debug mode
+
