@@ -488,4 +488,42 @@
 
     [area.rs:9:12] 15 * 2 = 30 // file and line number
 
+ Methods in structs
+    We can use methods in struct, and do calculations with that struct's properties.
+    To implement a method to a struct:
 
+    struct Rectangle {
+        w: i32,
+        h: i32,
+    }
+
+    impl Rectangle { // implementing struct method
+        fn area(&self) -> i32 {
+            self.w * self.h
+        }
+    }
+
+    Methods get the first paramets the self, the instance of struct always.
+    Here, the area is using reference type of struct. Which only reads poperties of structs.
+    We can also update the instance in method:
+
+    ---
+
+        fn area(&mut self) -> i32 { // mutable
+        }
+
+    ---
+
+    We can create a struct property with the same name with method.
+    Here we can know the width is higher that zero or not.
+
+    struct Rectangle {
+        w: i32, // w name
+        h: i32,
+    }
+
+    impl Rectangle {
+        fn w(&self) -> bool { // w name
+            self.w > 0
+        }
+    }
