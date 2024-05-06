@@ -547,3 +547,56 @@
 
     println!("Square: {:#?}", sqr1); // printing in debug mode
 
+[May 6, 2024]
+ Enums and Pattern matching
+    Enums are similar to structs. Enums are supposed to store different version
+    of one type.
+
+    For example we can use for IP versions as following:
+
+    enum IpAddrKind {
+        V4,
+        V6,
+    }
+
+    let four = IpAddrKind::V4;
+    let six = IpAddrKind::V6;
+
+    then we can pass to a function:
+
+    fn route(ip_kind: IpAddrKind) {}
+
+    We can combine structs and enums each other as properties:
+
+    enum IpAddrKind {
+        V4,
+        V6,
+    }
+
+    struct IpAddr {
+        kind: IpAddrKind,
+        address: String,
+    }
+
+    We can make this code more cleaner as following:
+
+    enum IpAddr {
+        V4(String),
+        V6(String),
+    }
+
+    let home = IpAddr::V4(String::from("127.0.0.1"));
+
+    let loopback = IpAddr::V6(String::from("::1"));
+
+    as you can see, enum itself can handle all of these.
+
+    Another, plus side of enums is each enum property can handle different
+    type of data types based on the data it stores, as following:
+
+
+    enum IpAddr {
+        V4(u8, u8, u8, u8),
+        V6(String),
+    }
+
