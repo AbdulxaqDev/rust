@@ -45,7 +45,6 @@ fn main() {
         let color1 = Color(255, 255, 255);
 
         println!("Distance between p1 and p2 is {}", distance(p1, p2));
-        println!("Distance between p1 and p2 is {}", distance(color1, color1));
     }
 }
 
