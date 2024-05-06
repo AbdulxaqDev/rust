@@ -600,3 +600,21 @@
         V6(String),
     }
 
+    We can define methods in enums as structs as following:
+
+    enum Message {
+        Write(String),
+    }
+
+    impl Message {
+        fn call(&self) {
+            // method body would be defined here
+        }
+    }
+
+    let m = Message::Write(String::from("hello"));
+    m.call();
+
+ Option Enum
+    
+
